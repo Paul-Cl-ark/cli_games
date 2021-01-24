@@ -10,6 +10,11 @@ def display_board(board):
         print(' +-----------+\n')
 
 
+def add_move_to_board(board, position, sign):
+    board[position[0]][position[1]] = sign
+    return board
+
+
 def enter_move(board):
     move = input('Enter a space between 1 and 9: ')
     move_tuple = get_field(move)
@@ -20,8 +25,7 @@ def enter_move(board):
     if not move_tuple in free_fields:
         return enter_move(board)
     else:
-        board[move_tuple[0]][move_tuple[1]] = 'x'
-        return board
+        return add_move_to_board(board, move_tuple, 'x')
 
 
 def make_list_of_free_fields(board):
@@ -62,8 +66,7 @@ def draw_move(board):
     if (not move_tuple in free_fields):
         return draw_move(board)
     else:
-        board[move_tuple[0]][move_tuple[1]] = 'o'
-        return board
+        return add_move_to_board(board, move_tuple, 'o')
 
 
 def play(board):
