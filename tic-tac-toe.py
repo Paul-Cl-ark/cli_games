@@ -55,6 +55,12 @@ def victory_for(board, sign):
             return True
         elif all(board[item][row_index] == sign for item in range(0, 3)):
             return True
+        elif board[0][0] == sign and board[0][0] == board[1][1] and \
+                board[1][1] == board[2][2]:
+            return True
+        elif board[0][2] == sign and board[0][2] == board[1][1] and \
+                board[1][1] == board[2][0]:
+            return True
         else:
             return False
 
