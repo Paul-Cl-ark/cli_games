@@ -75,11 +75,13 @@ def play(board):
         new_board = enter_move(board)
 
         if victory_for(new_board, 'x'):
-            print('x wins!')
+            display_board(new_board)
+            print('\nx wins!')
             return print('\nGame over!')
         new_board_2 = draw_move(new_board)
         if victory_for(new_board_2, 'o'):
-            print('o wins!')
+            display_board(new_board_2)
+            print('\no wins!')
             return print('\nGame over!')
         play(new_board_2)
 
