@@ -67,6 +67,18 @@ scores = {
     'draw': 0
 }
 
-while scores['computer'] < 3 or scores['player'] < 3:
+while scores['computer'] < 3 and scores['player'] < 3:
     winner = play()
     scores[winner] += 1
+
+    print('\n')
+    print('COMPUTER:', scores['computer'])
+    print('YOU:', scores['player'])
+    print('DRAW:', scores['draw'])
+    print('\n--------------------------------------')
+else:
+    print('\n')
+    if winner == 'computer':
+        print('YOU LOSE!')
+    else:
+        ('YOU WIN!')
