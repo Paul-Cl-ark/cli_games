@@ -52,7 +52,7 @@ def victory_for(board, sign):
         for row in board:
             if all(item == sign for item in row):
                 return True
-            elif all(board[item][row_index] == sign for item in range(0, 3)):
+            elif all(board[column][row_index] == sign for column in range(0, 3)):
                 return True
     if board[0][0] == sign and board[0][0] == board[1][1] and \
             board[1][1] == board[2][2]:
@@ -93,6 +93,7 @@ def play(board):
         if not len(free_fields):
             display_board(computer_move_board)
             return print('\nDraw!\n\nGame over!')
+
         play(computer_move_board)
 
 
