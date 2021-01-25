@@ -2,28 +2,9 @@ from random import randrange
 board = [['-' for number in range(1, 4)] for row in range(1, 4)]
 
 
-def display_board(board):
-    print('\n')
-    for row in board:
-        print(' +-----------+\n', *row, sep=' | ', end=" |\n")
-    else:
-        print(' +-----------+\n')
-
-
 def add_move_to_board(board, position, sign):
     board[position[0]][position[1]] = sign
     return board
-
-
-def enter_move(board):
-    move = input('Enter a space between 1 and 9: ')
-    move_tuple = get_field(move)
-    free_fields = make_list_of_free_fields(board)
-
-    if not move_tuple or not move_tuple in free_fields:
-        return enter_move(board)
-    else:
-        return add_move_to_board(board, move_tuple, 'x')
 
 
 def make_list_of_free_fields(board):
@@ -47,6 +28,35 @@ def get_field(key):
     return key_map[key]
 
 
+def draw_move(board):
+    move = str(randrange(9))
+    move_tuple = get_field(move)
+    free_fields = make_list_of_free_fields(board)
+    if (not move_tuple in free_fields):
+        return draw_move(board)
+    else:
+        return add_move_to_board(board, move_tuple, 'o')
+
+
+def enter_move(board):
+    move = input('Enter a space between 1 and 9: ')
+    move_tuple = get_field(move)
+    free_fields = make_list_of_free_fields(board)
+
+    if not move_tuple or not move_tuple in free_fields:
+        return enter_move(board)
+    else:
+        return add_move_to_board(board, move_tuple, 'x')
+
+
+def display_board(board):
+    print('\n')
+    for row in board:
+        print(' +-----------+\n', *row, sep=' | ', end=" |\n")
+    else:
+        print(' +-----------+\n')
+
+
 def victory_for(board, sign):
     for row_index, row in enumerate(board):
         for row in board:
@@ -64,19 +74,10 @@ def victory_for(board, sign):
         return False
 
 
-def draw_move(board):
-    move = str(randrange(9))
-    move_tuple = get_field(move)
-    free_fields = make_list_of_free_fields(board)
-    if (not move_tuple in free_fields):
-        return draw_move(board)
-    else:
-        return add_move_to_board(board, move_tuple, 'o')
-
-
 def play(board):
     while not victory_for(board, 'x') and not victory_for(board, 'o'):
         display_board(board)
+
         player_move_board = enter_move(board)
 
         if victory_for(player_move_board, 'x'):
@@ -90,6 +91,7 @@ def play(board):
             return print('\nComputer wins!\n\nGame over!')
 
         free_fields = make_list_of_free_fields(board)
+
         if not len(free_fields):
             display_board(computer_move_board)
             return print('\nDraw!\n\nGame over!')
