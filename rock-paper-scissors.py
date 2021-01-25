@@ -1,15 +1,5 @@
 from random import choice
 
-# get computer input
-# prompt user to enter move
-# validate move
-# move not valid -> you lose
-# else calculate winner
-# draw, win, or loss
-# keep tally of score
-# best to 5 wins
-
-
 moves = ('rock', 'paper', 'scissors')
 
 
@@ -18,9 +8,9 @@ def print_winner(winner):
     if winner == 'draw':
         print('DRAW...')
     elif winner == 'computer':
-        print('YOU LOSE!')
+        print('YOU LOSE THIS ROUND!')
     else:
-        print('YOU WIN!')
+        print('YOU WIN THIS ROUND!')
     print('\n--------------------------------------')
 
 
@@ -66,6 +56,8 @@ scores = {
     'player': 0,
     'draw': 0
 }
+
+print('\nROCK 👊, PAPER ✋, SCISSORS ✌️!\n\nBEST OF 3!')
 
 while scores['computer'] < 3 and scores['player'] < 3:
     winner = play()
