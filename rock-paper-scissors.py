@@ -72,9 +72,9 @@ while scores['computer'] < 3 and scores['player'] < 3:
     scores[winner] += 1
 
     print('\n')
-    print('COMPUTER:', scores['computer'])
-    print('YOU:', scores['player'])
-    print('DRAW:', scores['draw'])
+    print('COMPUTER:', scores['computer'], '     d[o_0]b')
+    print('YOU:', scores['player'], '            0w0')
+    print('DRAW:', scores['draw'], '           =-=  ')
     print('\n--------------------------------------')
 else:
     print('\n')
