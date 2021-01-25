@@ -21,6 +21,7 @@ def print_winner(winner):
         print('YOU LOSE!')
     else:
         print('YOU WIN!')
+    print('\n--------------------------------------')
 
 
 def calculate_winner(computer_move, player_move):
@@ -49,6 +50,7 @@ def print_moves(computer_move, player_move):
 
 
 def play():
+
     computer_move = choice(moves)
     player_move = input('\nEnter \'rock\', \'paper\' or \'scissors\'... ')
 
@@ -56,6 +58,15 @@ def play():
     winner = calculate_winner(computer_move, player_move)
 
     print_winner(winner)
+    return winner
 
 
-play()
+scores = {
+    'computer': 0,
+    'player': 0,
+    'draw': 0
+}
+
+while scores['computer'] < 3 or scores['player'] < 3:
+    winner = play()
+    scores[winner] += 1
