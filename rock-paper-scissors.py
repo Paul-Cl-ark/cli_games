@@ -13,6 +13,16 @@ from random import choice
 moves = ('rock', 'paper', 'scissors')
 
 
+def print_winner(winner):
+    print('\n')
+    if winner == 'draw':
+        print('DRAW...')
+    elif winner == 'computer':
+        print('YOU LOSE!')
+    else:
+        print('YOU WIN!')
+
+
 def calculate_winner(computer_move, player_move):
     if computer_move == player_move:
         return 'draw'
@@ -45,7 +55,7 @@ def play():
     print_moves(computer_move, player_move)
     winner = calculate_winner(computer_move, player_move)
 
-    print(winner)
+    print_winner(winner)
 
 
 play()
