@@ -13,10 +13,25 @@ from random import choice
 moves = ('rock', 'paper', 'scissors')
 
 
+def get_symbol(input):
+    symbol_dictionary = {
+        'rock': '👊',
+        'paper': '✋',
+        'scissors': '✌️'
+    }
+    return symbol_dictionary[input]
+
+
+def print_moves(computer_move, player_move):
+    print('\n', get_symbol(computer_move), '🆚',
+          get_symbol(player_move), sep="   ")
+
+
 def play():
     computer_move = choice(moves)
     player_move = input('\nEnter \'rock\', \'paper\' or \'scissors\'... ')
-    print(computer_move, player_move)
+
+    print_moves(computer_move, player_move)
 
 
 play()
