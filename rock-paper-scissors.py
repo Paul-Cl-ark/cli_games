@@ -1,4 +1,5 @@
 from random import choice
+from time import sleep
 
 moves = ('rock', 'paper', 'scissors')
 
@@ -39,11 +40,22 @@ def print_moves(computer_move, player_move):
           get_symbol(player_move), sep="   ")
 
 
+def count_down():
+    sleep(0.3)
+    print('\n3...')
+    sleep(0.85)
+    print('2...')
+    sleep(0.85)
+    print('1...\n')
+    sleep(0.85)
+
+
 def play():
 
     computer_move = choice(moves)
     player_move = input('\nEnter \'rock\', \'paper\' or \'scissors\'... ')
 
+    count_down()
     print_moves(computer_move, player_move)
     winner = calculate_winner(computer_move, player_move)
 
@@ -73,4 +85,4 @@ else:
     if winner == 'computer':
         print('YOU LOSE!')
     else:
-        ('YOU WIN!')
+        print('YOU WIN!')
