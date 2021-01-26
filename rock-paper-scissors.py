@@ -50,10 +50,20 @@ def count_down():
     sleep(0.85)
 
 
-def play():
-
-    computer_move = choice(moves)
+def get_player_move():
     player_move = input('\nEnter \'rock\', \'paper\' or \'scissors\'... ')
+
+    if player_move not in moves:
+        print('\nTry again...')
+        sleep(1)
+        get_player_move()
+
+    return player_move
+
+
+def play():
+    computer_move = choice(moves)
+    player_move = get_player_move()
 
     count_down()
     print_moves(computer_move, player_move)
