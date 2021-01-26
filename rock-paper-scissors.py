@@ -73,26 +73,37 @@ def play():
     return winner
 
 
+play_again = True
+
 scores = {
     'computer': 0,
     'player': 0,
     'draw': 0
 }
 
-print('\nROCK 👊, PAPER ✋, SCISSORS ✌️!\n\nBEST OF 3!')
 
-while scores['computer'] < 3 and scores['player'] < 3:
-    winner = play()
-    scores[winner] += 1
+while play_again:
+    print('\nROCK 👊, PAPER ✋, SCISSORS ✌️!\n\nBEST OF 3!')
 
-    print('\n')
-    print('COMPUTER:', scores['computer'], '     d[o_0]b')
-    print('YOU:', scores['player'], '            0w0')
-    print('DRAW:', scores['draw'], '           =-=  ')
-    print('\n--------------------------------------')
-else:
-    print('\n')
-    if winner == 'computer':
-        print('YOU LOSE!')
+    while scores['computer'] < 3 and scores['player'] < 3:
+        winner = play()
+        scores[winner] += 1
+
+        print('\n')
+        print('COMPUTER:', scores['computer'], '     d[o_0]b')
+        print('YOU:', scores['player'], '            0w0')
+        print('DRAW:', scores['draw'], '           =-=  ')
+        print('\n--------------------------------------')
     else:
-        print('YOU WIN!')
+        print('\n')
+        if winner == 'computer':
+            print('YOU LOSE!')
+        else:
+            print('YOU WIN!')
+
+    play_again_choice = input(
+        '\nPlay again? Enter \'yes\' to continue playing... ')
+    print('\n--------------------------------------')
+
+    play_again = play_again_choice[0] == 'y'
+    scores = {k: 0 for k, v in scores.items()}
