@@ -1,5 +1,4 @@
 # cli_games
-CLI games written in Python
 
 Some simple CLI games I've made while learning Python. 
 
